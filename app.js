@@ -12,25 +12,22 @@ fetch(`https://api.github.com/users/${username}`)
   })
   .catch((err) => console.error("Error fetching profile:", err));
 
-// ===== Featured repositories with live demos & screenshots =====
+// ===== Featured repositories with emoticons instead of screenshots =====
 const featuredRepos = [
   {
     repo: "krVVisty/CyberShield-website",
     live: "https://krVVisty.github.io/CyberShield-website/",
-    image:
-      "https://raw.githubusercontent.com/krVVisty/CyberShield-website/main/screenshot.png",
+    icon: "🛡️",
   },
   {
     repo: "krVVisty/Image-gallery",
     live: "https://krVVisty.github.io/Image-gallery/",
-    image:
-      "https://raw.githubusercontent.com/krVVisty/Image-gallery/main/screenshot.png",
+    icon: "🎨",
   },
   {
     repo: "krVVisty/Shopping-list",
     live: "https://krVVisty.github.io/Shopping-list/",
-    image:
-      "https://raw.githubusercontent.com/krVVisty/Shopping-list/main/screenshot.png",
+    icon: "🛒",
   },
 ];
 
@@ -48,11 +45,8 @@ featuredRepos.forEach(async (item) => {
     card.classList.add("repo-card");
 
     card.innerHTML = `
-      <h2>📦 ${data.full_name}</h2>
+      <h2>${item.icon} ${data.full_name}</h2>
       <p>📝 ${data.description || "No description"}</p>
-      <img src="${item.image}" alt="${
-      data.name
-    } screenshot" style="width:100%; border-radius:8px; margin:10px 0;">
       <p>⭐ Stars: ${data.stargazers_count}</p>
       <p>🍴 Forks: ${data.forks_count}</p>
       <p>🐛 Open Issues: ${data.open_issues_count}</p>
